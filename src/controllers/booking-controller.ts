@@ -51,6 +51,5 @@ export async function updateBooking(req: AuthenticatedRequest, res: Response, ne
     if (error.name === 'ForbiddenError') {
       return res.sendStatus(httpStatus.FORBIDDEN).send(error);
     }
-    return res.sendStatus(httpStatus.BAD_REQUEST);
   }
 }
