@@ -15,11 +15,11 @@ async function getBooking(userId: number) {
   });
 }
 
-async function createBookings({ userId, roomId }: NewBookings): Promise<Booking> {
+async function createBookings({ roomId, userId }: NewBookings): Promise<Booking> {
   return prisma.booking.create({
     data: {
-      userId,
       roomId,
+      userId,
     },
   });
 }
@@ -28,6 +28,9 @@ async function getBookingsRoom(roomId: number) {
   return prisma.booking.findMany({
     where: {
       roomId,
+    },
+    include: {
+      Room: true,
     },
   });
 }
