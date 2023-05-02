@@ -30,10 +30,10 @@ export async function postBooking(req: AuthenticatedRequest, res: Response, next
     });
   } catch (error) {
     if (error.name === 'NotFoundError') {
-      return res.status(httpStatus.NOT_FOUND).send(error);
+      next();
     }
     if (error.name === 'ForbiddenError') {
-      return res.status(httpStatus.FORBIDDEN).send(error);
+      next();
     }
   }
 }
