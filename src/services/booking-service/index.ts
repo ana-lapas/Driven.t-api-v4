@@ -38,12 +38,19 @@ async function postBookings(userId: number, roomId: number) {
   }
 
   const bookings = await bookingRepository.getBooking(userId);
-  if (!bookings) throw forbiddenError();
+  if (!bookings) {
+    throw forbiddenError();
+  }
 
   const checkBookings = await bookingRepository.getBookingsRoom(bookings.roomId);
-  if (existingRoom.capacity <= checkBookings.length) throw forbiddenError();
+  if (existingRoom.capacity <= checkBookings.length) {
+    throw forbiddenError();
+  }
 
-  return bookingRepository.createBookings({ userId, roomId });
+  return bookingRepository.createBookings({
+    userId,
+    roomId,
+  });
 }
 
 async function updateBookings(userId: number, bookingId: number, roomId: number) {
