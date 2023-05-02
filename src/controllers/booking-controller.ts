@@ -30,10 +30,10 @@ export async function postBooking(req: AuthenticatedRequest, res: Response, next
     });
   } catch (error) {
     if (error.name === 'NotFoundError') {
-      return res.sendStatus(httpStatus.NOT_FOUND).send(error);
+      return res.status(httpStatus.NOT_FOUND).send(error);
     }
     if (error.name === 'ForbiddenError') {
-      return res.sendStatus(httpStatus.FORBIDDEN).send(error);
+      return res.status(httpStatus.FORBIDDEN).send(error);
     }
   }
 }
@@ -50,10 +50,10 @@ export async function updateBooking(req: AuthenticatedRequest, res: Response, ne
     });
   } catch (error) {
     if (error.name === 'NotFoundError') {
-      return res.sendStatus(httpStatus.NOT_FOUND).send(error);
+      return res.status(httpStatus.NOT_FOUND).send(error);
     }
     if (error.name === 'ForbiddenError') {
-      return res.sendStatus(httpStatus.FORBIDDEN).send(error);
+      return res.status(httpStatus.FORBIDDEN).send(error);
     }
   }
 }
