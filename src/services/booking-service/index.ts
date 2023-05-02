@@ -67,7 +67,7 @@ async function updateBookings(userId: number, bookingId: number, roomId: number)
 
   const checkNewBookings = await bookingRepository.getBookingsRoom(roomId);
   if (existingNewRoom.capacity <= checkNewBookings.length) {
-    throw unauthorizedError();
+    throw forbiddenError();
   }
   return bookingRepository.updateBooking({
     id: bookingId,
