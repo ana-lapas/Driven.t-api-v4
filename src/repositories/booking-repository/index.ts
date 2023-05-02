@@ -15,11 +15,11 @@ async function getBooking(userId: number) {
   });
 }
 
-async function createBookings({ roomId, userId }: NewBookings): Promise<Booking> {
+async function createBookings({ userId, roomId }: NewBookings): Promise<Booking> {
   return prisma.booking.create({
     data: {
-      roomId,
       userId,
+      roomId,
     },
   });
 }
